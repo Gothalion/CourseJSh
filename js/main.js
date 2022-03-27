@@ -2,8 +2,8 @@ let num = 266219;
 
 const getMultiple = (num) =>
   num
-    .toString()
-    .split('')
+    .toString() // переводим в строку
+    .split('') // делим на части
     .reduce((res, item) => item * res, 1);
 console.log(getMultiple(num));
 let exp = Math.pow(getMultiple(num), 3);
