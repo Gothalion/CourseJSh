@@ -50,7 +50,7 @@ console.log(langArray(3, 'ru'));
 */
 
 let namePerson = 'Артем';
-let foo =
+const person =
   namePerson === 'Артем'
     ? console.log('директор')
     : namePerson === 'Александр'
