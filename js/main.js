@@ -1,3 +1,4 @@
+'use strict';
 /*
 1). Переменная lang может принимать 2 значения: 'ru' 'en'.
 Написать условия при котором в зависимости от значения lang будут выводится дни недели на русском или английском языке. 
@@ -12,9 +13,13 @@ let lang = 'en';
 // Метод с конструкцией if else
 
 if (lang === 'ru') {
-  console.log('понедельник \n вторник \n среда \n четверг \n пятница \n суббота \n воскресенье');
+  console.log(
+    'понедельник \n вторник \n среда \n четверг \n пятница \n суббота \n воскресенье'
+  );
 } else if (lang === 'en') {
-  console.log('monday \n tuesday \n wednesday \n thursday \n friday \n saturday \n sunday');
+  console.log(
+    'monday \n tuesday \n wednesday \n thursday \n friday \n saturday \n sunday'
+  );
 } else {
   console.log('Введите значение ru или en');
 }
@@ -23,10 +28,14 @@ if (lang === 'ru') {
 
 switch (lang) {
   case 'ru':
-    console.log('понедельник \n вторник \n среда \n четверг \n пятница \n суббота \n воскресенье');
+    console.log(
+      'понедельник \n вторник \n среда \n четверг \n пятница \n суббота \n воскресенье'
+    );
     break;
   case 'en':
-    console.log('monday \n tuesday \n wednesday \n thursday \n friday \n saturday \n sunday');
+    console.log(
+      'monday \n tuesday \n wednesday \n thursday \n friday \n saturday \n sunday'
+    );
     break;
   default:
     console.log('Введите значение ru или en');
@@ -36,8 +45,25 @@ switch (lang) {
 
 const langArray = (number, lang) =>
   ({
-    en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+    en: [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ],
+    ru: [
+      'Понедельник',
+      'Вторник',
+      'Среда',
+      'Четверг',
+      'Пятница',
+      'Суббота',
+      'Воскресенье',
+    ],
   }[lang][number % 7]);
 
 console.log(langArray(5, 'en'));
