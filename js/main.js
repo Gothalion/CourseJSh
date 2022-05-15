@@ -1,58 +1,19 @@
-/*
-1). Переменная lang может принимать 2 значения: 'ru' 'en'.
-Написать условия при котором в зависимости от значения lang будут выводится дни недели на русском или английском языке. 
-Решите задачу.
-a) через if,
-b) через switch-case
-c) через многомерный массив без ифов и switch. 
-*/
+// Создайте функцию, которая принимает 1 аргумент (название произвольное)
 
-let lang = 'en';
+// — Если в качестве аргумента передана не строка - функция оповещает об этом пользователя
 
-// Метод с конструкцией if else
+// — В полученной (как аргумент) строке функция должна убрать все пробелы в начале и в конце
 
-if (lang === 'ru') {
-  console.log('понедельник \n вторник \n среда \n четверг \n пятница \n суббота \n воскресенье');
-} else if (lang === 'en') {
-  console.log('monday \n tuesday \n wednesday \n thursday \n friday \n saturday \n sunday');
-} else {
-  console.log('Введите значение ru или en');
-}
+// — Если строка более 30 знаков - то после 30го символа часть текста скрывается и вместо них появляются три точки (...)
 
-// Метод с конструкцией switch
+const foo = function (str) {
+  if (typeof str !== 'string') {
+    return alert('Аргумент не строка');
+  }
 
-switch (lang) {
-  case 'ru':
-    console.log('понедельник \n вторник \n среда \n четверг \n пятница \n суббота \n воскресенье');
-    break;
-  case 'en':
-    console.log('monday \n tuesday \n wednesday \n thursday \n friday \n saturday \n sunday');
-    break;
-  default:
-    console.log('Введите значение ru или en');
-}
+  str = str.trim();
+  return str.length > 30 ? str.slice(0, 30) + '...' : str;
+};
 
-// Метод с многоменрным массивом
-
-const langArray = (number, lang) =>
-  ({
-    en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-  }[lang][number % 7]);
-
-console.log(langArray(5, 'en'));
-console.log(langArray(3, 'ru'));
-
-/* У нас есть переменная namePerson. Если значение этой переменной “Артем” то вывести в консоль “директор”, 
-если значение “Александр” то вывести в консоль “преподаватель”
-с любым другим значением вывести в консоль “студент”
- Решить задачу с помощью нескольких тернарных операторов, без использования if или switch 
-*/
-
-let namePerson = 'Артем';
-const person =
-  namePerson === 'Артем'
-    ? console.log('директор')
-    : namePerson === 'Александр'
-    ? console.log('преподаватель')
-    : console.log('студент');
+let test = foo('ooooooooooooooooooooo');
+console.log(test);
