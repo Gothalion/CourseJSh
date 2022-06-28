@@ -1,28 +1,55 @@
-// 1) Создать массив arr = []
+// 1) Создать массив week и записать в него дни недели в виде строк
 
-// — Записать в него 7 любых многозначных чисел в виде строк
+//     Вывести на экран все дни недели
+//     Каждый из них с новой строчки
+//     Выходные дни - курсивом
+//     Текущий день - жирным шрифтом(использовать объект даты)
 
-// — Вывести в консоль только те, что начинаются с цифры 2 или 4 (Должны присутствовать в массиве)
+'use strict';
 
-let arr = ['242', '12', '98', '43', '64521', '121', '2545'];
+let week = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
 
-let arr2 = arr.filter((item) => item[0] == '2' || item[0] == '4');
+let todayDate = new Date();
+let todayIndex = todayDate.getDate();
 
-console.log(arr2);
+const body = document.querySelector('body');
 
-// 2) Вывести в столбик все простые числа от 1 до 100 (сделать при помощи цикла)
+const getList = function (array, today) {
+  let result = [];
 
-// — Рядом с каждым числом написать оба делителя данного числа
+  for (let i = 0; i < array.length; i++) {
+    let li = document.createElement('li');
 
-//     Например: “Делители этого числа: 1 и n”
+    if (i == today) {
+      li.append(array[i]);
+      li.style.fontWeight = 'bold';
+      if (array[i] == 'Sunday' || array[i] == 'Saturday') {
+        li.style.fontStyle = 'italic';
+      }
 
-const n = 100;
-
-notPrimeNumber: for (let i = 2; i <= n; i++) {
-  for (let j = 2; j < 1; j++) {
-    if (i % j == 0) {
-      continue notPrimeNumber;
+      result.push(li);
+    } else if (array[i] == 'Sunday' || array[i] == 'Saturday') {
+      li.append(array[i]);
+      li.style.fontStyle = 'italic';
+      result.push(li);
+    } else {
+      li.append(array[i]);
+      result.push(li);
     }
   }
-  console.log(i + ' Делители этого числа 1 и ' + i);
-}
+
+  return result;
+};
+
+body.prepend(document.createElement('ul'));
+document.querySelector('ul').append(...getList(week, todayIndex));
+
+getList();
